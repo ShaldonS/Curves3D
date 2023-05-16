@@ -40,7 +40,7 @@ class Curve {
 public:
 	Curve() : point{} {}
 	Curve(Point3D point) : point{ point } {}
-	~Curve() {}
+	virtual ~Curve() {}
 
 	void setFirstPoint(Point3D point) {
 		point = point;
