@@ -19,20 +19,38 @@ int main(int argc, char** argv) {
 		rand_double = 0.0 + (double)rand() / RAND_MAX * (1'000'000.0);
 		if (i < 33) {
 			radius = rand_double;
-			std::shared_ptr<Curve> circle = std::make_shared<Circle>(radius);//(new Circle{ radius });
-			curves.push_back(std::move(circle));
+			try {
+				std::shared_ptr<Curve> circle = std::make_shared<Circle>(radius);
+				curves.push_back(std::move(circle));
+			}
+			catch (const char* error_message) {
+				std::cout << error_message << "\n";
+				return 0;
+			}
 		}
 		else if (i < 66) {
 			radius_x = rand_double;
 			radius_y = 0.0 + (double)rand() / RAND_MAX * (1'000'000.0);
-			std::shared_ptr<Curve> ellipse = std::make_shared<Ellipse>(radius_x, radius_y);//(new Ellipse{ radius_x, radius_y });
-			curves.push_back(std::move(ellipse));
+			try {
+				std::shared_ptr<Curve> ellipse = std::make_shared<Ellipse>(radius_x, radius_y);
+				curves.push_back(std::move(ellipse));
+			}
+			catch (const char* error_message) {
+				std::cout << error_message << "\n";
+				return 0;
+			}
 		}
 		else {
 			h_radius = rand_double;
 			h_pitch = 0.0 + (double)rand() / RAND_MAX * (1'000'000.0);
-			std::shared_ptr<Curve> helix = std::make_shared<Helix>(h_radius, h_pitch);//(new Helix{ h_radius, h_pitch });
-			curves.push_back(std::move(helix));
+			try {
+				std::shared_ptr<Curve> helix = std::make_shared<Helix>(h_radius, h_pitch);
+				curves.push_back(std::move(helix));
+			}
+			catch (const char* error_message) {
+				std::cout << error_message << "\n";
+				return 0;
+			}
 		}
 	}
 	
@@ -95,8 +113,14 @@ int main(int argc, char** argv) {
 	// filling with more elements
 	for (size_t i(0); i < 500'000; ++i) {
 		radius = 0.0 + (double)rand() / RAND_MAX * (1'000'000.0);
-		std::shared_ptr<Curve> circle = std::make_shared<Circle>( radius);
-		curves_2.push_back(std::move(circle));
+		try {
+			std::shared_ptr<Curve> circle = std::make_shared<Circle>(radius);
+			curves_2.push_back(std::move(circle));
+		}
+		catch (const char* error_message) {
+			std::cout << error_message << "\n";
+			return 0;
+		}
 	}
 	// sorting again
 	std::sort(curves_2.begin(), curves_2.end(),
