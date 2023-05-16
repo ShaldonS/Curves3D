@@ -87,7 +87,7 @@ int main(int argc, char** argv) {
 	}
 	std::cout << std::fixed << _sum << "\n";
 
-	/*
+	
 	// 8
 	std::cout << "\n<<8>>\n";
 	double sum(0.0);
@@ -116,14 +116,14 @@ int main(int argc, char** argv) {
 	sum = 0.0;
 
 	start = omp_get_wtime();
-#pragma omp parallel for
+#pragma omp parallel for reduction(+:sum)
 	for (int i(0); i < curves_2.size(); ++i) {
 		sum += (double)curves_2[i]->getRadius();
 	}
 	end = omp_get_wtime();
 
 	std::cout << std::fixed << sum << " | ";
-	std::cout << "Parallel time: \t" << (double)(end - start) << "\n";*/
+	std::cout << "Parallel time: \t" << (double)(end - start) << "\n";
 	
 	return 0;
 }
