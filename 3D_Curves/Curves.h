@@ -63,7 +63,7 @@ class Circle : public Curve {
 public:
 	Circle() : radius(0.0) { setFirstPoint(Point3D{}); }
 	Circle(double radius) : radius(radius) { 
-		if (radius < 0.0) throw std::terminate; setFirstPoint(Point3D{}); 
+		if (radius < 0.0) throw "Radius less than 0.0. Exiting..."; setFirstPoint(Point3D{}); 
 	}
 	~Circle() {}
 
@@ -103,7 +103,7 @@ class Ellipse : public Curve {
 public:
 	Ellipse() : radius_x(0.0), radius_y(0.0) { setFirstPoint(Point3D{}); }
 	Ellipse(double radius_x, double radius_y) : radius_x(radius_x), radius_y(radius_y) {
-		if (radius_x < 0.0 || radius_y < 0.0) throw std::terminate;
+		if (radius_x < 0.0 || radius_y < 0.0) throw "Radius less than 0.0. Exiting...";
 		setFirstPoint(Point3D{});
 	}
 	~Ellipse() {}
@@ -153,7 +153,7 @@ class Helix : public Curve {
 public:
 	Helix() : radius(0.0), pitch(0.0) { setFirstPoint(Point3D{}); }
 	Helix(double radius, double pitch) : radius(radius), pitch(pitch) { 
-		if (radius < 0.0) throw std::terminate; 
+		if (radius < 0.0) throw "Radius less than 0.0. Exiting..."; 
 		setFirstPoint(Point3D{}); 
 	}
 	~Helix() {}
